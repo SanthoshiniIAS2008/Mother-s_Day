@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Mom 💗 Cinematic Love</title>
+
+<style>
+
+/* 🌸 BASE */
+body {
+    margin: 0;
+    font-family: Arial;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+    position: relative;
+
+    background: linear-gradient(-45deg,
+        #ff4d6d,
+        #ff85a2,
+        #ffd6ff,
+        #ffd700
+    );
+    background-size: 400% 400%;
+    animation: bg 8s infinite alternate;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes bg {
+    0% {background-position: 0% 50%;}
+    100% {background-position: 100% 50%;}
+}
+
+/* 🎬 INTRO */
+#intro {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    animation: fadeOut 4s forwards 5s;
+    text-align: center;
+    padding: 20px;
+}
+
+#intro .title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700, 0 0 25px #ffcc00, 0 0 40px #ff9900;
+    animation: glow 1.5s infinite alternate;
+}
+
+#momName {
+    color: #ffd700;
+    text-shadow: 0 0 10px gold, 0 0 20px orange;
+    font-weight: bold;
+}
+
+#intro .subtitle {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #fff3b0;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+#intro .subtitle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,215,0,0.8), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% {left: -100%;}
+    100% {left: 100%;}
+}
+
+@keyframes glow {
+    0% {text-shadow: 0 0 10px #ffd700;}
+    100% {text-shadow: 0 0 25px #ffcc00, 0 0 40px #ff9900;}
+}
+
+@keyframes fadeOut {
+    to {opacity: 0; visibility: hidden;}
+}
+
+/* 💗 MAIN TEXT */
+.love3d {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 38px;
+    font-weight: bold;
+
+    background: linear-gradient(45deg,#ff4d6d,#ffd700,#fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ffd700;
+    animation: float 3s infinite;
+    z-index: 5;
+}
+
+@keyframes float {
+    0%,100% {transform: translate(-50%,-50%);}
+    50% {transform: translate(-50%,-55%);}
+}
+
+/* 🌈 FULLSCREEN SLIDESHOW */
+.bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.bg img.active {
+    opacity: 1;
+}
+
+/* 💖 QUOTE */
+#quote {
+    position: relative;
+    z-index: 20;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* 🧊 CARD */
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 420px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 10;
+    position: relative;
+}
+
+/* 👑 FRAME */
+.frame {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px auto;
+    border: 4px solid gold;
+    box-shadow: 0 0 25px gold;
+}
+
+.frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 💌 LETTER */
+#letter {
+    display: none;
+    background: white;
+    color: #ff4d6d;
+    padding: 20px;
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 15px;
+}
+
+/* ✍️ CURSOR EFFECT */
+#typeText::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {opacity: 0;}
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg,#ff0066,#ffd700);
+    color: white;
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 AUDIO ADDED (SAFE, NO STRUCTURE CHANGE) -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="clickSound" src="click.mp3"></audio>
+<audio id="whooshSound" src="whoosh.mp3"></audio>
+
+<!-- 🎬 INTRO (UNCHANGED) -->
+<div id="intro">
+    <div class="title">
+        💗 Creating a Memory for <span id="momName"></span>
+    </div>
+    <div class="subtitle">A tribute to the world’s best mom 🌸👑</div>
+</div>
+
+<!-- 💗 MAIN TEXT -->
+<div class="love3d">I LOVE YOU MOM 💗✨</div>
+
+<!-- 🌈 BACKGROUND -->
+<div class="bg" id="bg"></div>
+
+<h1>🌸 Happy Mother's Day 🌸</h1>
+
+<div class="frame">
+    <img id="momImg" src="mom1.jpeg">
+</div>
+
+<div id="quote"></div>
+
+<div class="card">
+    <button onclick="playClick(changePhoto)">🌸 Next Photo</button>
+    <button onclick="playClick(openLetter)">💌 Love Letter</button>
+</div>
+
+<div id="letter">
+    <h2>Dear Mom 💗</h2>
+    <p>You are my world, my strength, my happiness. Thank you for everything ✨</p>
+</div>
+
+<script>
+
+/* 🎵 AUDIO SYSTEM */
+let bgMusic = document.getElementById("bgMusic");
+let clickSound = document.getElementById("clickSound");
+let whooshSound = document.getElementById("whooshSound");
+
+let musicStarted = false;
+
+function startMusic(){
+    if(!musicStarted){
+        bgMusic.volume = 0.4;
+        bgMusic.play();
+        musicStarted = true;
+    }
+}
+
+function playClick(fn){
+    startMusic();
+    clickSound.currentTime = 0;
+    clickSound.play();
+    fn();
+}
+
+/* 🌈 SLIDESHOW */
+let imgs=["mom1.jpeg","mom2.jpeg","mom3.jpeg","mom4.jpeg","mom5.jpeg","mom6.jpeg"];
+let bg=document.getElementById("bg");
+
+imgs.forEach(i=>{
+    let img=document.createElement("img");
+    img.src=i;
+    bg.appendChild(img);
+});
+
+let slideIndex=0;
+
+function showSlide(){
+    let all=document.querySelectorAll(".bg img");
+    all.forEach(img=>img.classList.remove("active"));
+    all[slideIndex].classList.add("active");
+
+    whooshSound.currentTime = 0;
+    whooshSound.play();
+
+    slideIndex=(slideIndex+1)%all.length;
+}
+
+showSlide();
+setInterval(showSlide,3000);
+
+/* 👑 PHOTO CHANGE */
+let photoIndex=0;
+function changePhoto(){
+    let img=document.getElementById("momImg");
+    photoIndex=(photoIndex+1)%imgs.length;
+    img.src=imgs[photoIndex];
+
+    whooshSound.currentTime = 0;
+    whooshSound.play();
+}
+
+/* 💬 QUOTES */
+let quotes=[
+"Mom: my first love 💗",
+"Behind everything I am is you ✨",
+"Your love is my strength 💛",
+"You are my forever hero 👑"
+];
+
+let q=0;
+setInterval(()=>{
+    document.getElementById("quote").innerText=quotes[q];
+    q=(q+1)%quotes.length;
+},3000);
+
+/* 💌 LETTER */
+function openLetter(){
+    document.getElementById("letter").style.display="block";
+}
+
+/* 👑 TYPE NAME */
+let nameText="SUMATHI";
+let i=0;
+
+function typeName(){
+    if(i < nameText.length){
+        document.getElementById("momName").innerHTML += nameText.charAt(i);
+        i++;
+        setTimeout(typeName,180);
+    }
+}
+
+setTimeout(typeName,1200);
+
+/* 🎵 START MUSIC ON FIRST CLICK */
+document.body.addEventListener("click", startMusic, { once:true });
+
+</script>
+
+</body>
+</html>
